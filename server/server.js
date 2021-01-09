@@ -1,7 +1,8 @@
 const app = require('./app');
 
-
-// Start server
-app.listen(process.env.PORT || 8000, () => {
-    console.log(`Server running on port ${process.env.PORT || 8000}`);
-});
+const port = process.env.PORT || 8080;
+//start server on port 8080
+app.listen(port, () => {
+    console.log( `server running http://localhost:${ port }` );
+    console.log( `press CTRL+C to stop server` );
+})
