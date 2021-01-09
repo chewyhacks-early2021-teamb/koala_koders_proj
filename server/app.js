@@ -11,13 +11,14 @@ const express = require('express'),
 	  User 			= require('./models/user'),
 	  session 		= require('express-session'),
 	  methodOverride = require('method-override');
-// 	  seedPost 	= require('./seeds');
-// seedPost();
+	  seedProduct 	= require('./seeds');
+seedProduct();
 
 
 
 // require routes
 const indexRoutes 	 = require('./routes/index');
+const productsRoutes = require('./routes/products');
 
 
 
@@ -49,7 +50,7 @@ app.use(cookieParser('secret'));
 app.use(require('express-session')({
     secret: 'Once again Rusty wins cutest dog!',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true
 }));
 
 app.use(flash());
@@ -77,6 +78,7 @@ app.use(function(req, res, next){
 
 //mount routes
 app.use('/', indexRoutes);
+app.use('/products', productsRoutes);
 
 //catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -94,7 +96,7 @@ app.use((err, req, res, next) => {
 // 	//render the error page
 	res.status(err.status || 500);
 	console.log(err.status);
-	res.send('error');
+	res.send(err.message);
 });
 
 
