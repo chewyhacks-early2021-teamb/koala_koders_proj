@@ -1,7 +1,7 @@
 const express = require('express'),
       router = express.Router();
 const {getRegister, postRegister, getLogin, postLogin, getLogout,   } = require('../controller');
-const { asyncErrorHandler} = require('../middleware')
+const { asyncErrorHandler} = require('../middleware');
 
 let async = require("async");
 let nodemailer = require("nodemailer");
