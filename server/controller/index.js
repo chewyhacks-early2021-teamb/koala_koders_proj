@@ -43,7 +43,8 @@ module.exports = {
 		const { user, error } = await User.authenticate()(username, password);
 		if(!user && error) return next(error);
 		req.login(user, function(err){
-			if(err) return next(err);
+            if(err) return next(err);
+            console.log(`Welcome , ${user.fullName}!`);
 			req.session.success = `Welcome ${user.fullName}!`;
 			const redirectUrl = req.session.redirectTo || '/';
 			delete req.session.redirectTo;

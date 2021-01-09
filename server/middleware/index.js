@@ -1,5 +1,8 @@
 const User = require('../models/user');
 
+function escapeRegExp(string){
+	return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
 module.exports = {
 	
 	asyncErrorHandler: (fn) => 
@@ -14,4 +17,8 @@ module.exports = {
 		req.session.redirectTo = req.originalUrl;
 		res.redirect('/login');
 	},
-}
+
+	async searchAndFilterProducts(req, res, next){
+		
+	}
+};
