@@ -2,7 +2,7 @@
 
 ## Team Members and Roles
 * Roshan - 
-* Degman -   
+* Dagem -   
 * Akin -
 * Sheyla -
 * Dephney -
