@@ -3,7 +3,8 @@ import { FormControl } from '@angular/forms';
 
 import { AgoraClient, ClientEvent, NgxAgoraService, Stream, StreamEvent } from 'ngx-agora';
 import { environment } from 'src/environments/environment';
-
+import { AngularFirestore } from '@angular/fire/firestore';
+import { firestore } from 'firebase/app';
 @Component({
   selector: 'app-pharm',
   templateUrl: './pharm.component.html',
@@ -24,7 +25,7 @@ export class PharmComponent implements OnInit {
       "flex-direction": "column",
       "flex-wrap": "wrap",
       "height": "700px",
-      "width": "1300px",
+      "width": "100%",
       "padding": "5px"
       }
     } else {
@@ -33,7 +34,7 @@ export class PharmComponent implements OnInit {
     "flex-direction": "row",
     "flex-wrap": "wrap",
     "height": "700px",
-    "width": "1300px",
+    "width": "100%",
     "padding": "5px",
     "justify-content": "center"}
       this.rec_text = "Show Recommend View"
@@ -66,12 +67,86 @@ export class PharmComponent implements OnInit {
    * Whether the local client's A/V stream has been published to the remote meeting room
    */
   published = false;
-
-  constructor(private agoraService: NgxAgoraService) {
+  productLink = "78972";
+  userID = "nm2h0kyxsYTs4Id9tRl01PTwkUW2"
+  list_of_products_ids;
+  list_of_products = [];
+  list_of_managed_products = [];
+  constructor(private agoraService: NgxAgoraService, private firestore: AngularFirestore) {
     this.uid = Math.floor(Math.random() * 100);
 
-    this.client = this.agoraService.createClient({ mode: 'rtc', codec: 'h264' });
+    firestore.collection('Products').get().forEach(cols => {
+      cols.docs.forEach(snapshot => {
+        this.list_of_products.push(this.retrieve_product_info(snapshot, snapshot.id))
+
+      })
+
+      
+    })
+    
+    // subscribe(snapshot => {
+    //   this.list_of_products_ids = snapshot.data()
+    //   this.list_of_recommended_products_ids.forEach(product_id => {
+    //     console.log("product Id" + product_id )
+    //     this.list_of_products.push(this.retrieve_product_info(product_id))
+    //   })
+
+    // })
+    this.client = this.agoraService.createClient({ mode: 'live', codec: 'h264' });
     this.assignClientHandlers();
+  }
+
+  recommendProduct(product_id, product) {
+    var ref = this.firestore.collection('Users').doc(this.userID)
+   
+    ref.update({recommended_products: firestore.FieldValue.arrayUnion(product_id)})
+
+    this.remove(product);
+  }
+
+  unrecommendProduct(product_id) {
+    var ref = this.firestore.collection('Users').doc(this.userID)
+   
+    ref.update({recommended_products: firestore.FieldValue.arrayRemove(product_id)})
+
+  }
+
+  retrieve_product_info(snapshot, id) {
+    var product = { title: "", 
+                    category: "", 
+                    price: "", 
+                    image_url: "",
+                    link: "",
+                    id: id}
+  
+    if(snapshot.data().title) {
+      product.title = snapshot.data().title
+    }
+    if(snapshot.data().category) {
+      product.category = snapshot.data().category
+    }
+    if(snapshot.data().price) {
+      product.price = snapshot.data().price
+    }
+
+    if(snapshot.data().image_url) {
+      product.image_url = snapshot.data().image_url
+    }
+    if(snapshot.data().link) {
+      product.link = snapshot.data().link
+    }
+
+    
+    // console.log(snapshot + "stringify")
+      // product = { title: snapshot.data().title, 
+                    // category: snapshot.data().category, 
+                    // price:snapshot.data().price, 
+                    // image_url: snapshot.data().image_url
+    
+    
+    // }
+   
+  return product
   }
 
   ngOnInit() {
@@ -79,7 +154,7 @@ export class PharmComponent implements OnInit {
     "flex-direction": "row",
     "flex-wrap": "wrap",
     "height": "700px",
-    "width": "1300px",
+    "width": "100%",
     "padding": "5px",
     "justify-content": "center"}
     this.client.init(this.appId.value, () => console.log('Initialized successfully'), () => console.log('Could not initialize'));
@@ -204,4 +279,30 @@ export class PharmComponent implements OnInit {
     return `agora_remote-${stream.getId()}`;
   }
 
+  remove(item) {
+    // var id = item.id
+    const index = this.list_of_products.indexOf(item);
+    this.list_of_managed_products.push(item);
+    // const indexInID = this.list_of_products_ids.indexOf(id);
+
+    if (index >= 0) {
+      this.list_of_products.splice(index, 1);
+    }
+
+    // if(indexInID) {
+    //   this.list_of_products_ids.splice(indexInID, 1);
+
+    // }
+    
+  }
+
+  undo_rec_item(item) {
+    const index = this.list_of_managed_products.indexOf(item);
+    this.list_of_products.push(item);
+    if (index >= 0) {
+      this.list_of_managed_products.splice(index, 1);
+    }
+    this.unrecommendProduct(item.id);
+
+  }
 }

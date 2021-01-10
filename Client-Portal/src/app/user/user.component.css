@@ -3,19 +3,19 @@
     
 }
 #agora_local {
-    border: 7px solid white;
+    border: 7px solid #7b7b7b;
     border-radius: 10px;
 }
 
 #undefined {
-    border: 7px solid white;
+    border: 7px solid #7b7b7b;
     border-radius: 10px;
 }
 
 
 .remote {
     background: rgba(#333, 0.5);
-    border: 7px solid white;
+    border: 7px solid #7b7b7b;
     border-radius: 10px;
 }
 

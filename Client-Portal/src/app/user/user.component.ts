@@ -3,7 +3,18 @@ import { FormControl } from '@angular/forms';
 
 import { AgoraClient, ClientEvent, NgxAgoraService, Stream, StreamEvent } from 'ngx-agora';
 import { environment } from 'src/environments/environment';
+import { AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
+import { AuthenticationService } from '../services/authentication.service';
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators'
 
+interface product {
+  title:string, 
+  price: string, 
+  image_url: string, 
+  category: string, 
+  link: string
+}
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -40,13 +51,88 @@ export class UserComponent implements OnInit {
    */
   published = false;
 
-  constructor(private agoraService: NgxAgoraService) {
+  user_uid;
+  list_of_recommended_products_ids;
+  list_of_recommended_products = [];
+  product_ref
+  constructor(private authenticationService: AuthenticationService, private agoraService: NgxAgoraService, private firestore: AngularFirestore) {
+    this.user_uid = this.authenticationService.user_uid;
+  
+
+    
+      // firestore.doc('Users/'+this.user_uid).get().subscribe(snapshot => {
+      //   this.list_of_recommended_products_ids = snapshot.data().recommended_products
+      //   this.list_of_recommended_products_ids.forEach(product_id => {
+      //     console.log("product Id" + product_id )
+      //     this.retrieve_product_info(product_id)
+      //   })
+      // })
+      
+
+      firestore.doc('Users/'+this.user_uid).snapshotChanges().subscribe(snapshot => {
+        console.log('we are liveee')
+        this.list_of_recommended_products = []
+        this.list_of_recommended_products_ids = snapshot.payload.data()['recommended_products']
+        this.list_of_recommended_products_ids.forEach(product_id => {
+          console.log("product Id" + product_id )
+          this.list_of_recommended_products.push(this.retrieve_product_info(product_id))
+        })
+
+      })
+      
+    
+    
+
+
     this.uid = Math.floor(Math.random() * 100);
 
-    this.client = this.agoraService.createClient({ mode: 'rtc', codec: 'h264' });
+    this.client = this.agoraService.createClient({ mode: 'live', codec: 'h264' });
     this.assignClientHandlers();
   }
+  retrieve_product_info(id) {
+    var product = { title: "", 
+                    category: "", 
+                    price: "", 
+                    image_url: "",
+                    link: ""}
+  var ref = this.firestore.doc('Products/'+id).get().subscribe(snapshot => {
+    if(snapshot.data().title) {
+      product.title = snapshot.data().title
+    }
+    if(snapshot.data().category) {
+      product.category = snapshot.data().category
+    }
+    if(snapshot.data().price) {
+      product.price = snapshot.data().price
+    }
 
+    if(snapshot.data().image_url) {
+      product.image_url = snapshot.data().image_url
+    }
+    if(snapshot.data().link) {
+      product.link = snapshot.data().link
+    }
+
+    
+    // console.log(snapshot + "stringify")
+      // product = { title: snapshot.data().title, 
+                    // category: snapshot.data().category, 
+                    // price:snapshot.data().price, 
+                    // image_url: snapshot.data().image_url
+    
+    
+    // }
+    console.log(product.title + "title")
+    console.log(product.image_url + "image_url")
+
+    console.log(product.price + "price")
+
+    console.log(product.category + "category")
+
+
+  })
+  return product
+  }
   ngOnInit() {
     this.client.init(this.appId.value, () => console.log('Initialized successfully'), () => console.log('Could not initialize'));
   }

@@ -1,3 +1,11 @@
+
+body {
+    /* background-image: url(img/homepage.jpg);
+    background-size: cover;
+    background-attachment: fixed; */
+
+
+}
 .div1 {
     box-sizing: border-box;
     margin: 25px;
@@ -55,7 +63,7 @@ float: left;
     flex-direction: column;
     flex-wrap: wrap;
     height: 700px;
-    width: 1300px;
+    width: 100%;
     padding: 5px;
 }
 
@@ -64,25 +72,27 @@ float: left;
     flex-flow: wrap;
     position: relative;
     flex-direction: row-reverse;
-    border: 7px solid white;
+    border: 7px solid #7b7b7b;
     border-radius: 10px;
-    width: 510px;
-    height: 320px;
+    width: 700px;
+    height: 400px;
     margin: 5px;
     background-color: rgba(#333, 0.5);
 }
-
+.item:hover {
+    transform: translateY(5px) scale(1.05);
+}
 #subvideo {
     background-color: rgba(#333, 0.5);
     display: flex;
-    border: 2px solid black;
-    width: 150px;
-    height: 96px;
+    border: 2px solid #7b7b7b;
+    width: 300px;
+    height: 180px;
     margin: 5px;
     align-self: flex-end;
     justify-self: right;
     position: absolute;
-    background-color: #128CED;
+    /* background-color: #128CED; */
 }
 
 #chatandlist {
@@ -151,16 +161,22 @@ input {
 #item {
     border-bottom: solid;
     border-width: 1px;
-    width: 210px;
+    width: 200px;
     height: 60px;
 }
 
 #chrome-extension {
-    border: solid;
+    /* border: solid;
     border-width: 1px;
-    width: 900px;
+    
     height: 620px;
     margin: 5px;
+    overflow: scroll; */
+    margin: 5px;
+    overflow: scroll;
+    border-radius: 10px;
+    background-color: #cccccc;
+    width: 700px;
 }
 
 #r {

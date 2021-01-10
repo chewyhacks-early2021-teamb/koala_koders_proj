@@ -62,7 +62,7 @@
 
   <mat-accordion style = "margin:20px;"> 
 
-      <mat-expansion-panel style = "margin:20px;"(opened)="panelOpenState = true"
+      <mat-expansion-panel style = "margin:20px; "(opened)="panelOpenState = true"
                        (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -70,79 +70,28 @@
               </mat-panel-title>
      
     </mat-expansion-panel-header>
- <div style = "display:flex; flex-wrap: wrap; justify-content: space-around;">
-    <mat-card class = "item" > 
+ 
+<div style = "display: flex; justify-content: space-around;flex-wrap: wrap;"> 
+  <div *ngFor = "let product of list_of_recommended_products"  class = "item">
+    <a   href = {{product.link}} target = "_blank"> 
+    <mat-card  > 
         <mat-card-title>
-            Chuckit! Ultra Rubber Ball Tough Dog Toy
+            {{product.title}}
         </mat-card-title>
   
         <mat-card-subtitle>
-            Category: Toy Price: $5.01
+          <strong> Category: </strong> {{product.category}} |  <strong> Price: </strong> ${{product.price}}
         </mat-card-subtitle>
   
         <mat-card-content style = "display: flex;justify-content: center;">
-          <img style = "width:200px" src="https://img.chewy.com/is/image/catalog/90246_MAIN._AC_SL1500_V1527093481_.jpg" alt="">
+          <img style = "width:200px" src= {{product.image_url}} alt="">
         </mat-card-content>
     </mat-card>
-
-    <mat-card class = "item" > 
-        <mat-card-title>
-            Chuckit! Ultra Rubber Ball Tough Dog Toy
-        </mat-card-title>
-  
-        <mat-card-subtitle>
-            Category: Toy Price: $5.01
-        </mat-card-subtitle>
-  
-        <mat-card-content style = "display: flex;justify-content: center;">
-          <img style = "width:200px" src="https://img.chewy.com/is/image/catalog/90246_MAIN._AC_SL1500_V1527093481_.jpg" alt="">
-        </mat-card-content>
-    </mat-card>
-
-    <mat-card class = "item" > 
-        <mat-card-title>
-            Chuckit! Ultra Rubber Ball Tough Dog Toy
-        </mat-card-title>
-  
-        <mat-card-subtitle>
-            Category: Toy Price: $5.01
-        </mat-card-subtitle>
-  
-        <mat-card-content style = "display: flex;justify-content: center;">
-          <img style = "width:200px" src="https://img.chewy.com/is/image/catalog/90246_MAIN._AC_SL1500_V1527093481_.jpg" alt="">
-        </mat-card-content>
-    </mat-card>
-
-    <mat-card class = "item" > 
-        <mat-card-title>
-            Chuckit! Ultra Rubber Ball Tough Dog Toy
-        </mat-card-title>
-  
-        <mat-card-subtitle>
-            Category: Toy Price: $5.01
-        </mat-card-subtitle>
-  
-        <mat-card-content style = "display: flex;justify-content: center;">
-          <img style = "width:200px" src="https://img.chewy.com/is/image/catalog/90246_MAIN._AC_SL1500_V1527093481_.jpg" alt="">
-        </mat-card-content>
-    </mat-card>
-
-    <mat-card class = "item" > 
-        <mat-card-title>
-            Chuckit! Ultra Rubber Ball Tough Dog Toy
-        </mat-card-title>
-  
-        <mat-card-subtitle>
-            Category: Toy Price: $5.01
-        </mat-card-subtitle>
-  
-        <mat-card-content style = "display: flex;justify-content: center;">
-          <img style = "width:200px" src="https://img.chewy.com/is/image/catalog/90246_MAIN._AC_SL1500_V1527093481_.jpg" alt="">
-        </mat-card-content>
-    </mat-card>
+  </a>
+</div>
+   </div>
     
     
-  </div>
   </mat-expansion-panel>
   </mat-accordion>
 

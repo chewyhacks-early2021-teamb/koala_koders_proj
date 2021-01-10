@@ -17,7 +17,7 @@
                 </div>
             </div>
             <!-- <div class="col-6"> -->
-                    <div style = "width: 508px;display:flex;justify-content: center; flex-direction: column;">
+                    <div style = "width: 700px;display:flex;justify-content: center; flex-direction: column;">
                       <!-- <div class="col-12"> -->
                           <div style = "justify-content: center;display: flex;">
                         <button *ngIf = "showJoinButton" mat-flat-button color="primary" (click)="join()">Connect To User</button>
@@ -37,30 +37,37 @@
                                         </mat-panel-title>
                                
                               </mat-expansion-panel-header>
-                           <div style = "display:flex; flex-wrap: wrap; justify-content: space-around;">
-                              <mat-card class = "item" > 
-                                  <mat-card-title>
-                                      Chuckit! Ultra Rubber Ball Tough Dog Toy
-                                  </mat-card-title>
-                            
-                                  <mat-card-subtitle>
-                                      Category: Toy Price: $5.01
-                                  </mat-card-subtitle>
-                            
-                                  <mat-card-content style = "display: flex;justify-content: center;">
-                                    <img style = "width:200px" src="https://img.chewy.com/is/image/catalog/90246_MAIN._AC_SL1500_V1527093481_.jpg" alt="">
-                                  </mat-card-content>
-                                  <div style = "display: flex;justify-content: flex-end;"> 
-                                        <button mat-icon-button aria-label="Example icon button with a menu icon">
-                                                <mat-icon>delete</mat-icon>
-                                              </button>
-
+                              
+                              <div style = "display: flex; justify-content: space-around; flex-wrap: wrap;overflow: scroll;"> 
+                                    <div *ngFor = "let product of list_of_managed_products"  class = "item">
+                                      <mat-card  > 
+                                            <a   href = {{product.link}} target = "_blank"> 
+        
+                                          <mat-card-title>
+                                              {{product.title}}
+                                          </mat-card-title>
+                                    
+                                          <mat-card-subtitle>
+                                            <strong> Category: </strong> {{product.category}} |  <strong> Price: </strong> ${{product.price}}
+                                          </mat-card-subtitle>
+                                        </a>
+                                          <mat-card-content style = "display: flex;justify-content: center;flex-direction: column;align-items: center;">
+                                            <img style = "height: 250px;width:50%;" src= {{product.image_url}} alt="">
+                                            <!-- <button style = "margin:10 px;" mat-raised-button (click) = 'recommendProduct(product.id)'> Recommend Item</button> -->
+                                            <div style = "display: flex;justify-content: flex-end;"> 
+                                                    <button (click) = "undo_rec_item(product)"mat-icon-button aria-label="Example icon button with a menu icon">
+                                                            <mat-icon>delete</mat-icon>
+                                                          </button>
+                                                          </div>
+                                        </mat-card-content>
+        
+        
+                                      </mat-card>
                                   </div>
-                                 
-                                 
-                              </mat-card>
-                          
-                            </div>
+                                     </div>
+                         
+                                
+
                             </mat-expansion-panel>
                             </mat-accordion>
                     </div>   
@@ -86,7 +93,30 @@
                     </div>
                 </div>
             </div> -->
-            
             <div *ngIf = "showRec" id="chrome-extension">
-        <iframe  src="https://chewy.com" frameborder="0" style = "width: 100%;height: 100%;"></iframe>            </div>
+                    <div style = "display: flex; justify-content: space-around;flex-wrap: wrap;" > 
+                            <div *ngFor = "let product of list_of_products"  class = "item">
+                              <mat-card  > 
+                                    <a   href = {{product.link}} target = "_blank"> 
+
+                                  <mat-card-title>
+                                      {{product.title}}
+                                  </mat-card-title>
+                            
+                                  <mat-card-subtitle>
+                                    <strong> Category: </strong> {{product.category}} |  <strong> Price: </strong> ${{product.price}}
+                                  </mat-card-subtitle>
+                                </a>
+                                  <mat-card-content style = "display: flex;justify-content: center;flex-direction: column;align-items: center;">
+                                    <img style = "height: 250px;width:50%;" src= {{product.image_url}} alt="">
+                                    <button style = "margin-top:15px;" mat-raised-button (click) = 'recommendProduct(product.id, product)'> Recommend Item</button>
+
+                                </mat-card-content>
+
+
+                              </mat-card>
+                          </div>
+                             </div>
+                              
+        <!-- <iframe  src="https://chewy.com" frameborder="0" style = "width: 100%;height: 100%;"></iframe>            </div> -->
         </div>

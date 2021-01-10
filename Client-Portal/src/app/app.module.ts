@@ -18,7 +18,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { LoginComponent } from './login/login.component';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuth } from "@angular/fire/auth";
+import {AngularFirestore} from "@angular/fire/firestore"
 @NgModule({
   declarations: [AppComponent, PharmComponent, UserComponent, LoginComponent],
   imports: [
@@ -35,9 +37,11 @@ import { FormsModule } from '@angular/forms';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule,
     NgxAgoraModule.forRoot({ AppID: environment.agora.appId })
   ],
-  providers: [],
+  providers: [AngularFireAuth, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
