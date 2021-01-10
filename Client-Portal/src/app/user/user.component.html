@@ -1,0 +1,152 @@
+
+        <mat-toolbar color="primary">
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+              <mat-icon>home</mat-icon>
+            </button>
+            <span>Chewy</span>
+            <span class="example-spacer"></span>
+          
+          </mat-toolbar>
+        
+       
+
+<section class="container">
+
+    <article class="row">
+   
+  
+     
+          <!-- <div class="col-12">
+            User id: {{ uid }}
+          </div> -->
+  
+      <!-- <div class="col-6">
+        <div class="row">
+          <h2 class="col-12">Connected: {{ connected }}</h2>
+          <h2 class="col-12">Published: {{ published }}</h2>
+        </div>
+      </div> -->
+  
+      <!-- <div class="col-12">
+        {{ remoteCalls | json }}
+      </div> -->
+    </article>
+  
+    <article class="row pt-3">
+      <div class="col">
+        <div id="agora_local" class="local"></div>
+      </div>
+      <div class="col">
+        <div class="remote_calls" [id]="remoteCalls[0]" class="remote"></div>
+      </div>
+    </article>
+   
+  </section>
+  <div style = "display:flex;justify-content: center; flex-direction: column;">
+        <div style = "justify-content: center;display: flex;margin: 10px;"> 
+      <button *ngIf = "showJoinButton" mat-flat-button color="primary" (click)="join()">Talk To An Expert Vet</button>
+      <!-- <button mat-button color="primary" (click)="publish()">Publish Local Stream</button> -->
+      <!-- <button mat-button color="primary" (click)="unpublish()">Unpublish Local Stream</button> -->
+      <button *ngIf = "showLeaveButton"  mat-flat-button color="warn" (click)="leave()">Leave Call</button>
+    </div>
+    </div>
+  <!-- <mat-card style = "margin:20px; height:40vh;">  -->
+ 
+  <!-- <mat-card-title>   -->
+      
+    <!-- <mat-card-subtitle> 
+        
+    </mat-card-subtitle> -->
+
+  <!-- </mat-card-title> -->
+
+  <mat-accordion style = "margin:20px;"> 
+
+      <mat-expansion-panel style = "margin:20px;"(opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          <strong> Recommendations </strong> 
+              </mat-panel-title>
+     
+    </mat-expansion-panel-header>
+ <div style = "display:flex; flex-wrap: wrap; justify-content: space-around;">
+    <mat-card class = "item" > 
+        <mat-card-title>
+            Chuckit! Ultra Rubber Ball Tough Dog Toy
+        </mat-card-title>
+  
+        <mat-card-subtitle>
+            Category: Toy Price: $5.01
+        </mat-card-subtitle>
+  
+        <mat-card-content style = "display: flex;justify-content: center;">
+          <img style = "width:200px" src="https://img.chewy.com/is/image/catalog/90246_MAIN._AC_SL1500_V1527093481_.jpg" alt="">
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class = "item" > 
+        <mat-card-title>
+            Chuckit! Ultra Rubber Ball Tough Dog Toy
+        </mat-card-title>
+  
+        <mat-card-subtitle>
+            Category: Toy Price: $5.01
+        </mat-card-subtitle>
+  
+        <mat-card-content style = "display: flex;justify-content: center;">
+          <img style = "width:200px" src="https://img.chewy.com/is/image/catalog/90246_MAIN._AC_SL1500_V1527093481_.jpg" alt="">
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class = "item" > 
+        <mat-card-title>
+            Chuckit! Ultra Rubber Ball Tough Dog Toy
+        </mat-card-title>
+  
+        <mat-card-subtitle>
+            Category: Toy Price: $5.01
+        </mat-card-subtitle>
+  
+        <mat-card-content style = "display: flex;justify-content: center;">
+          <img style = "width:200px" src="https://img.chewy.com/is/image/catalog/90246_MAIN._AC_SL1500_V1527093481_.jpg" alt="">
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class = "item" > 
+        <mat-card-title>
+            Chuckit! Ultra Rubber Ball Tough Dog Toy
+        </mat-card-title>
+  
+        <mat-card-subtitle>
+            Category: Toy Price: $5.01
+        </mat-card-subtitle>
+  
+        <mat-card-content style = "display: flex;justify-content: center;">
+          <img style = "width:200px" src="https://img.chewy.com/is/image/catalog/90246_MAIN._AC_SL1500_V1527093481_.jpg" alt="">
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class = "item" > 
+        <mat-card-title>
+            Chuckit! Ultra Rubber Ball Tough Dog Toy
+        </mat-card-title>
+  
+        <mat-card-subtitle>
+            Category: Toy Price: $5.01
+        </mat-card-subtitle>
+  
+        <mat-card-content style = "display: flex;justify-content: center;">
+          <img style = "width:200px" src="https://img.chewy.com/is/image/catalog/90246_MAIN._AC_SL1500_V1527093481_.jpg" alt="">
+        </mat-card-content>
+    </mat-card>
+    
+    
+  </div>
+  </mat-expansion-panel>
+  </mat-accordion>
+
+  
+
+
+<!-- </mat-card> -->

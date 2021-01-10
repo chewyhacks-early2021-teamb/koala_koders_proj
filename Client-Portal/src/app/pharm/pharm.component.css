@@ -1,0 +1,186 @@
+.div1 {
+    box-sizing: border-box;
+    margin: 25px;
+}
+.item {
+    width: 300px;
+     margin:10px
+}
+.div2 {
+    box-sizing: border-box;
+    margin: 25px;
+}
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+  height: 300px;
+  margin: 10px; /* Should be removed. Only for demonstration */
+}
+.left {
+  width: 30%;
+}
+.right {
+  width: 25%;
+}
+.middle{
+    width: 30%;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.recommendation{
+float: left;
+  padding: 10px;
+  height: 500px;
+  margin: 10px;
+  width: 30%;
+}
+.chaxbox{
+width: 50%;
+float: left;
+  padding: 10px;
+  height: 250px;
+  margin: 10px; 
+}
+
+
+
+
+#app {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 700px;
+    width: 1300px;
+    padding: 5px;
+}
+
+#video1 {
+    display: flex;
+    flex-flow: wrap;
+    position: relative;
+    flex-direction: row-reverse;
+    border: 7px solid white;
+    border-radius: 10px;
+    width: 510px;
+    height: 320px;
+    margin: 5px;
+    background-color: rgba(#333, 0.5);
+}
+
+#subvideo {
+    background-color: rgba(#333, 0.5);
+    display: flex;
+    border: 2px solid black;
+    width: 150px;
+    height: 96px;
+    margin: 5px;
+    align-self: flex-end;
+    justify-self: right;
+    position: absolute;
+    background-color: #128CED;
+}
+
+#chatandlist {
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    border: solid;
+    border-width: 0px;
+    width: 508px;
+    height: 320px;
+    margin: 5px;
+}
+
+#chat {
+    border: solid;
+    border-width: 1px;
+    width: 290px;
+    height: 290px;
+    background-color: #128CED;
+}
+
+#storedcomments {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    overflow: scroll;
+    border-width: 0px;
+    height: 220px;
+    margin: 5px;
+}
+
+#chat input {
+    height: 30px;
+}
+
+#cfunctions {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    height: 30px;
+    display: inline-block;
+}
+
+input {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 0;
+    margin-left: 5px;
+}
+
+#new-comment {
+    width: 190px;
+    border: 0px;
+}
+
+#list {
+    border: solid;
+    border-width: 1px;
+    background-color: #128CED;
+    width: 210px;
+    height: 290px;
+    overflow: scroll;
+}
+
+#item {
+    border-bottom: solid;
+    border-width: 1px;
+    width: 210px;
+    height: 60px;
+}
+
+#chrome-extension {
+    border: solid;
+    border-width: 1px;
+    width: 900px;
+    height: 620px;
+    margin: 5px;
+}
+
+#r {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    border-width: 0px;
+}
+
+p {
+    margin: 0px;
+}
+
+b {
+    margin: 0px;
+}
+
+
+.local,
+.remote {
+   width:100%;
+    /* height: 25vw; */
+}
