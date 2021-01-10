@@ -1,0 +1,44 @@
+{
+  "name": "ngx-agora",
+  "version": "2.0.1",
+  "schematics": "./schematics/collection.json",
+  "peerDependencies": {
+    "@angular/common": "^8.0.0",
+    "@angular/core": "^8.0.0",
+    "agora-rtc-sdk": "^2.6.1"
+  },
+  "description": "Angular wrapper for Agora RTC client (https://www.agora.io/en/)",
+  "main": "ngx-agora.module.ts",
+  "devDependencies": {
+    "@angular/cdk": "^8.0.0",
+    "agora-rtc-sdk": "^3.0.2"
+  },
+  "scripts": {
+    "test": "test",
+    "build": "ng build ngx-agora  && ../../node_modules/.bin/tsc -p schematics/tsconfig.json",
+    "copy:files": "ditto schematics/src/ng-add/* ../../dist/ngx-agora/schematics/ng-add/ && ditto schematics/src/util/* ../../dist/ngx-agora/schematics/util/ && ditto schematics/src/collection.json ../../dist/ngx-agora/schematics/",
+    "copy:schemas": "ditto schematics/src/*/schema.json ../../dist/ngx-agora/schematics/",
+    "copy:collection": "cp schematics/src/collection.json ../../dist/ngx-agora/schematics/collection.json",
+    "postbuild": "mkdir ../../dist/ngx-agora/schematics && npm run copy:files && npm run copy:schemas && npm run copy:collection"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drew-thompson/ngx-agora.git"
+  },
+  "keywords": [
+    "angular",
+    "library",
+    "agora",
+    "agora-rtc",
+    "agoraio",
+    "video",
+    "conferencing",
+    "typescript"
+  ],
+  "author": "Drew Thompson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drew-thompson/ngx-agora/issues"
+  },
+  "homepage": "https://github.com/drew-thompson/ngx-agora#readme"
+}

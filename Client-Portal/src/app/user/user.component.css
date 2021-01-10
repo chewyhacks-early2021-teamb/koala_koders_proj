@@ -1,0 +1,169 @@
+.local {
+    background: rgba(#333, 0.5);
+    
+}
+#agora_local {
+    border: 7px solid #7b7b7b;
+    border-radius: 10px;
+}
+
+#undefined {
+    border: 7px solid #7b7b7b;
+    border-radius: 10px;
+}
+
+
+.remote {
+    background: rgba(#333, 0.5);
+    border: 7px solid #7b7b7b;
+    border-radius: 10px;
+}
+
+.local,
+.remote {
+    height: 25vw;
+}
+
+
+
+
+#chat {
+    border: solid;
+    border-width: 1px;
+    width: 60%;
+    height: 320px;
+    background-color: #128CED;
+}
+#storedcomments {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    overflow: scroll;
+    border-width: 0px;
+    height: 260px;
+    margin: 5px;
+}
+#chat input {
+    height: 300;
+    
+}
+#cfunctions {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    height: 30px;
+    display: inline-block;
+}
+input {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 0;
+    margin-left: 5px;
+}
+#new-comment {
+    width: 200px;
+    border: 0px;
+}
+#r {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    border-width: 0px;
+}
+p {
+    margin: 0px;
+}
+b {
+    margin: 0px;
+}
+        .div1 {
+            box-sizing: border-box;
+            margin: 25px;
+        }
+        .div2 {
+            box-sizing: border-box;
+            margin: 25px;
+        }
+        
+        
+        /* Create two unequal columns that floats next to each other */
+        .column {
+          float: left;
+          padding: 10px;
+          height: 300px;
+          margin: 10px; /* Should be removed. Only for demonstration */
+        }
+        
+        .left {
+          width: 30%;
+          
+        }
+        
+        .right {
+          width: 25%;
+        }
+        .middle{
+            width: 30%;
+        }
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+
+        
+        }
+      .recommendation{
+        float: left;
+          padding: 10px;
+          height: 380px;
+          margin: 10px;
+          width: 30%;
+   
+
+      }
+
+      .chaxbox{
+        width: 60%;
+        float: left;
+        padding: 10px;
+        height: 250px;
+        margin: 10px; 
+          
+      }
+
+      div.ex3 {
+      background-color:white;
+      width: 90%;
+      height: 70%;
+      overflow: auto;
+}
+
+
+
+
+/* Create two equal columns that floats next to each other */
+.column1 {
+  float: left;
+  width: 30%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+.item {
+    width: 300px;
+     margin:10px
+}

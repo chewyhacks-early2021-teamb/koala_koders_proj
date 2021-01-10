@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "chewyrecommender"
+  },
+  "targets": {
+    "agora-bf17e": {
+      "hosting": {
+        "chewy": [
+          "chewyrecommender"
+        ]
+      }
+    }
+  }
+}

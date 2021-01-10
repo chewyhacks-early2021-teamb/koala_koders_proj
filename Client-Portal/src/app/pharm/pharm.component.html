@@ -1,0 +1,122 @@
+<mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>home</mat-icon>
+        </button>
+        <span>Chewy</span>
+        <span class="example-spacer"></span>
+      
+      </mat-toolbar>
+    
+        <div [ngStyle]="styling">
+            <div style = "display:flex;justify-content: center;flex-direction: column;">
+            <div id="video1">
+                <div class="remote_calls" [id]="remoteCalls[0]" class="remote"  ></div>
+                <!-- <img src="assets/test.png" width="510px" height="320px"/> -->
+                <div id="subvideo">
+                    <div id="agora_local" class="local" style = "width:100%;"></div>
+                </div>
+            </div>
+            <!-- <div class="col-6"> -->
+                    <div style = "width: 700px;display:flex;justify-content: center; flex-direction: column;">
+                      <!-- <div class="col-12"> -->
+                          <div style = "justify-content: center;display: flex;">
+                        <button *ngIf = "showJoinButton" mat-flat-button color="primary" (click)="join()">Connect To User</button>
+                        <!-- <button mat-button color="primary" (click)="publish()">Publish Local Stream</button> -->
+                        <!-- <button mat-button color="primary" (click)="unpublish()">Unpublish Local Stream</button> -->
+                        <button  *ngIf = "showLeaveButton" mat-flat-button color="warn" (click)="leave()">Leave Call</button>
+                        <button *ngIf = "!showJoinButton" mat-flat-button color="basic" (click)="reccomendItem()">{{rec_text}}</button>
+                            </div>
+                        <div style = "display:flex; align-self: center;"> 
+                        <mat-accordion style = "margin:20px;" *ngIf = "!showJoinButton"> 
+
+                                <mat-expansion-panel (opened)="panelOpenState = true"
+                                                 (closed)="panelOpenState = false">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <strong> Manage Recommended Products</strong> 
+                                        </mat-panel-title>
+                               
+                              </mat-expansion-panel-header>
+                              
+                              <div style = "display: flex; justify-content: space-around; flex-wrap: wrap;overflow: scroll;"> 
+                                    <div *ngFor = "let product of list_of_managed_products"  class = "item">
+                                      <mat-card  > 
+                                            <a   href = {{product.link}} target = "_blank"> 
+        
+                                          <mat-card-title>
+                                              {{product.title}}
+                                          </mat-card-title>
+                                    
+                                          <mat-card-subtitle>
+                                            <strong> Category: </strong> {{product.category}} |  <strong> Price: </strong> ${{product.price}}
+                                          </mat-card-subtitle>
+                                        </a>
+                                          <mat-card-content style = "display: flex;justify-content: center;flex-direction: column;align-items: center;">
+                                            <img style = "height: 250px;width:50%;" src= {{product.image_url}} alt="">
+                                            <!-- <button style = "margin:10 px;" mat-raised-button (click) = 'recommendProduct(product.id)'> Recommend Item</button> -->
+                                            <div style = "display: flex;justify-content: flex-end;"> 
+                                                    <button (click) = "undo_rec_item(product)"mat-icon-button aria-label="Example icon button with a menu icon">
+                                                            <mat-icon>delete</mat-icon>
+                                                          </button>
+                                                          </div>
+                                        </mat-card-content>
+        
+        
+                                      </mat-card>
+                                  </div>
+                                     </div>
+                         
+                                
+
+                            </mat-expansion-panel>
+                            </mat-accordion>
+                    </div>   
+
+                      <!-- </div> -->
+                      <!-- <div class="col-12">
+                        User id: {{ uid }}
+                      </div> -->
+                    </div>
+                </div>
+                  <!-- </div> -->
+            <!-- <div id="chatandlist">
+                <div id="chat">
+                    <div id="storedcomments"></div>
+                    <div id="cfunctions">
+                        <input type="textbox" value="Send a comment..." id="new-comment" onclick="clickedontextbox()">
+                        <input type="button" value="Send" onclick="newcomment()" >
+                    </div>
+                </div>
+                <div id="list" onclick="additem()">
+                    <div id="item">
+                        item
+                    </div>
+                </div>
+            </div> -->
+            <div *ngIf = "showRec" id="chrome-extension">
+                    <div style = "display: flex; justify-content: space-around;flex-wrap: wrap;" > 
+                            <div *ngFor = "let product of list_of_products"  class = "item">
+                              <mat-card  > 
+                                    <a   href = {{product.link}} target = "_blank"> 
+
+                                  <mat-card-title>
+                                      {{product.title}}
+                                  </mat-card-title>
+                            
+                                  <mat-card-subtitle>
+                                    <strong> Category: </strong> {{product.category}} |  <strong> Price: </strong> ${{product.price}}
+                                  </mat-card-subtitle>
+                                </a>
+                                  <mat-card-content style = "display: flex;justify-content: center;flex-direction: column;align-items: center;">
+                                    <img style = "height: 250px;width:50%;" src= {{product.image_url}} alt="">
+                                    <button style = "margin-top:15px;" mat-raised-button (click) = 'recommendProduct(product.id, product)'> Recommend Item</button>
+
+                                </mat-card-content>
+
+
+                              </mat-card>
+                          </div>
+                             </div>
+                              
+        <!-- <iframe  src="https://chewy.com" frameborder="0" style = "width: 100%;height: 100%;"></iframe>            </div> -->
+        </div>

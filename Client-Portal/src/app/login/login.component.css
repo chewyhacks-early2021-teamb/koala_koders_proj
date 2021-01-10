@@ -1,0 +1,90 @@
+body {
+    /* background-image: url('../../assets/homepage.jpg'); */
+    background-size: cover;
+    background-attachment: fixed;
+}
+.login-box {
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.15);
+
+    position: absolute;
+    max-width: 700px;
+    padding: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: black;
+}
+.login-box h1 {
+    float: left;
+    font-size: 40px;
+    border-bottom: 6px solid;
+    margin-bottom: 50px;
+    padding: 13px 0
+}
+.login-box .Vet .btn-primary {
+    font-size: 20px;
+    border-radius: 12px;
+}
+.login-box .Owner .btn-primary { 
+    font-size: 20px;
+    border-radius: 12px;
+}
+.login-box .dropdown{
+    width: 30rem;
+}
+.dropdown:hover .dropdown-list{
+    opacity:1;
+    position:relative;
+}
+.login-box .dropdown-select{
+    padding: 1.5rem;
+    border-radius: 4px;
+    background-color: white;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+.login-box .dropdown-list{
+    border-radius: 4px;
+    background-color: black;
+    position:absolute;
+    top:110%;
+    left: 0;
+    right: 0;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 0.2s linear, visibility 0.2s linear;
+}
+.login-box .dropdown-list__item{
+    padding: 1rem;
+    font-size: 1.4rem;
+}
+.textbox{
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid;
+}
+.textbox i{
+    width:26px;
+    float:left;
+    text-align:center;
+}
+​
+.textbook input{
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 18px;
+    /* width: 80px; */
+    float: left;
+    margin: 10px;
+    width:100%;
+}
